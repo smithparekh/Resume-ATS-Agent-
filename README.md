@@ -54,7 +54,7 @@ Recruiters performing fast pre-screening
 
 Career coaches and resume consultants
 
-AI-powered HR and recruitment tools
+## AI-powered HR and recruitment tools
 
 🔐 Security & Best Practices
 
