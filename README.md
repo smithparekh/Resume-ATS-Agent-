@@ -1,80 +1,79 @@
-# 📄 Resume ATS Agent
+# Resume ATS Agent
 
-## 🧠 AI-Powered Resume Screening & Optimization System
+> Multi-agent AI system that rewrites and scores your resume for Applicant Tracking Systems (ATS)
 
-Resume ATS Agent is an AI-driven application designed to simulate how modern Applicant Tracking Systems (ATS) evaluate resumes. It analyzes resumes against job descriptions, identifies missing skills and keywords, and generates actionable recommendations to improve shortlisting potential.
-
-This project demonstrates the practical use of AI agents, workflow orchestration, and prompt engineering to solve a real-world recruitment problem.
-
----
-
-## 🚀 Key Features
-
-- Resume vs Job Description matching  
-- AI-based skill and keyword extraction  
-- ATS-style compatibility analysis  
-- Personalized resume improvement suggestions  
-- Streamlit-based user interface  
-- Secure environment variable–based API key handling  
+[![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)](https://python.org)
+[![CrewAI](https://img.shields.io/badge/CrewAI-FF6B6B?style=flat&logoColor=white)](https://crewai.com)
+[![OpenAI](https://img.shields.io/badge/GPT--4o--mini-412991?style=flat&logo=openai&logoColor=white)](https://openai.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://streamlit.io)
 
 ---
 
-## 🏗️ Project Structure
+## What It Does
 
-resume_ats_agent/
+Paste your resume and a job description. Four specialized AI agents collaborate to:
 
+1. **Parser Agent** — Extracts skills, experience, and keywords from your resume
+2. **ATS Writer Agent** — Rewrites your resume bullets to match the job description
+3. **Refiner Agent** — Polishes language, removes fluff, sharpens impact
+4. **Evaluator Agent** — Scores the final resume and highlights remaining gaps
 
-├── agents.py           # AI agent definitions & logic
+The result is a download-ready, ATS-optimized resume tailored to the specific job.
 
-├── tasks.py            # Tasks and evaluation workflows
+---
 
-├── crew.py             # Agent orchestration layer
+## Architecture
 
-├── utils.py            # Utility & helper functions
+```
+Resume + Job Description
+        |
+        v
+  [Parser Agent]  ──── extracts skills, keywords, experience
+        |
+        v
+  [ATS Writer Agent]  ──── rewrites bullets to match JD keywords
+        |
+        v
+  [Refiner Agent]  ──── cleans language, improves impact statements
+        |
+        v
+  [Evaluator Agent]  ──── scores ATS match, flags missing keywords
+        |
+        v
+  Streamlit UI  ──── shows rewritten resume + score + download (.txt / .docx)
+```
 
-├── file_tools/         # File processing utilities
+---
 
-├── streamlit_app.py    # Streamlit web application
+## Tech Stack
 
-├── requirements.txt   # Python dependencies
+| Component | Technology |
+|---|---|
+| Agent Orchestration | CrewAI |
+| LLM | OpenAI GPT-4o-mini |
+| Frontend | Streamlit |
+| Output | Plain text + DOCX download |
 
-└── README.md
+---
 
+## Setup
 
-## ▶️ Running the Application
+```bash
+git clone https://github.com/smithparekh/Resume-ATS-Agent-
+cd Resume-ATS-Agent-
+pip install -r requirements.txt
 
-Streamlit Web App
+# Add your OpenAI API key
+export OPENAI_API_KEY=your_key_here
+
 streamlit run streamlit_app.py
+```
 
-## 🎯 Use Cases
+---
 
-Job seekers optimizing resumes for ATS systems
+## Key Features
 
-Recruiters performing fast pre-screening
-
-Career coaches and resume consultants
-
-## AI-powered HR and recruitment tools
-
-🔐 Security & Best Practices
-
-API keys are managed using environment variables
-
-Sensitive files are excluded using .gitignore
-
-No secrets are hard-coded in the application
-
-## 📈 Future Enhancements
-
-Resume scoring and ranking dashboard
-
-PDF & DOCX resume upload
-
-Multi-job role comparison
-
-ATS report export
-
-Keyword coverage visualization
-
-
-
+- 4-agent sequential pipeline built with CrewAI
+- Real-time streaming output in Streamlit UI
+- Download optimized resume as .txt or .docx
+- Configurable GPT-4o-mini model via sidebar
